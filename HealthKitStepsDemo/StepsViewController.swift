@@ -42,12 +42,12 @@ class StepsViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(stepCellIdentifier) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(stepCellIdentifier)! as UITableViewCell
         
         let step = steps[indexPath.row]
         let numberOfSteps = Int(step.quantity.doubleValueForUnit(healthKitManager.stepsUnit))
         
-        cell.textLabel.text = "\(numberOfSteps) steps"
+        cell.textLabel!.text = "\(numberOfSteps) steps"
         cell.detailTextLabel?.text = dateFormatter.stringFromDate(step.startDate)
         
         return cell
@@ -57,25 +57,25 @@ class StepsViewController: UIViewController, UITableViewDataSource {
 private extension StepsViewController {
     
     func requestHealthKitAuthorization() {
-        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount)
-        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead, completion: { [unowned self] (success, error) in
+        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount!)
+        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
             if success {
                 self.queryStepsSum()
                 self.querySteps()
             } else {
-                println(error.description)
+                print(error!.description)
             }
         })
     }
     
     func queryStepsSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
-        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount, quantitySamplePredicate: nil, options: sumOption) { [unowned self] (query, result, error) in
+        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount!, quantitySamplePredicate: nil, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                let headerView = self.tableView.dequeueReusableCellWithIdentifier(self.totalStepsCellIdentifier) as UITableViewCell
+                let headerView = self.tableView.dequeueReusableCellWithIdentifier(self.totalStepsCellIdentifier)! as UITableViewCell
                 
                 let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
-                headerView.textLabel.text = "\(numberOfSteps) total"
+                headerView.textLabel!.text = "\(numberOfSteps) total"
                 self.tableView.tableHeaderView = headerView
             }
             self.activityIndicator.stopAnimating()
@@ -85,7 +85,7 @@ private extension StepsViewController {
     }
     
     func querySteps() {
-        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount,
+        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount!,
             predicate: nil,
             limit: 100,
             sortDescriptors: nil)
