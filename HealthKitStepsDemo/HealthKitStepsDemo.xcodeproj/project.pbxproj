@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		DC91DD601C2C27EA007E17D0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91DD5F1C2C27EA007E17D0 /* HealthKit.framework */; };
+		DCB3B37A1C2C33250009197B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB3B3781C2C33250009197B /* Fabric.framework */; };
+		DCB3B37B1C2C33250009197B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB3B3791C2C33250009197B /* Crashlytics.framework */; };
 		FA35EC1A19F58DD300DCE986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35EC1919F58DD300DCE986 /* AppDelegate.swift */; };
 		FA35EC1F19F58DD300DCE986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA35EC1D19F58DD300DCE986 /* Main.storyboard */; };
 		FA35EC2119F58DD300DCE986 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA35EC2019F58DD300DCE986 /* Images.xcassets */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		DC91DD5F1C2C27EA007E17D0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		DCB3B3781C2C33250009197B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		DCB3B3791C2C33250009197B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FA35EC1419F58DD300DCE986 /* HealthKitStepsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthKitStepsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA35EC1819F58DD300DCE986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA35EC1919F58DD300DCE986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC91DD601C2C27EA007E17D0 /* HealthKit.framework in Frameworks */,
+				DCB3B37B1C2C33250009197B /* Crashlytics.framework in Frameworks */,
+				DCB3B37A1C2C33250009197B /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +75,8 @@
 				FA35EC1619F58DD300DCE986 /* HealthKitStepsDemo */,
 				FA35EC2C19F58DD300DCE986 /* HealthKitStepsDemoTests */,
 				FA35EC1519F58DD300DCE986 /* Products */,
+				DCB3B3781C2C33250009197B /* Fabric.framework */,
+				DCB3B3791C2C33250009197B /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +139,7 @@
 				FA35EC1019F58DD300DCE986 /* Sources */,
 				FA35EC1119F58DD300DCE986 /* Frameworks */,
 				FA35EC1219F58DD300DCE986 /* Resources */,
+				DCB3B3771C2C330B0009197B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -185,7 +194,7 @@
 				};
 			};
 			buildConfigurationList = FA35EC0F19F58DD300DCE986 /* Build configuration list for PBXProject "HealthKitStepsDemo" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -222,6 +231,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DCB3B3771C2C330B0009197B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run e92a97eaf6f16ff6912927018297259efaa8b199 a2b3ef294a446f887b7d32b5de5eb1d59ea2f82dbd11df931c4f2ccbab7fa093";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA35EC1019F58DD300DCE986 /* Sources */ = {
@@ -289,6 +314,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robbie Jerrom (B8TT8JWM4A)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -332,6 +358,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robbie Jerrom (B8TT8JWM4A)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -357,6 +384,10 @@
 				CODE_SIGN_ENTITLEMENTS = HealthKitStepsDemo/HealthKitStepsDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HealthKitStepsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -373,6 +404,10 @@
 				CODE_SIGN_ENTITLEMENTS = HealthKitStepsDemo/HealthKitStepsDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HealthKitStepsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
